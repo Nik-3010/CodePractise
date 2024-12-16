@@ -11,50 +11,47 @@ public class MergeSort {
             if(left[i] <= right[j]){
                 arr[k++] = left[i++];
             }
-            else {
+            else{
                 arr[k++] = right[j++];
             }
         }
 
-        // copy remaining elements from left array if any
-        while(i < n1){
+        // copy remaining elements from left array if any leftover
+        while( i < n1){
             arr[k++] = left[i++];
         }
 
-        // copy remaining elements from right array if any
         while(j < n2){
             arr[k++] = right[j++];
         }
     }
 
-
     public static void mergeSort(int[] arr){
         int n = arr.length;
-        int mid, left = 0, right = n - 1;
+        int mid;
 
-        // base case
+        // base condition
         if(n < 2){
             return;
         }
 
-        // calculate mid
-        //mid = (left + right)/2;
-        mid = n/2;
+        mid = n / 2;
 
-        // initialize two temporary array left and right
+        // initialize two temp arrays to copy the elements from original array
         int[] leftArr = new int[mid];
         int[] rightArr = new int[n - mid];
 
-        // copy the elements from original array to leftArr and rightArr
-        for(int i = 0 ; i < mid; i++){
+        for(int i = 0; i < mid; i++){
             leftArr[i] = arr[i];
         }
         for(int i = mid; i < n; i++){
             rightArr[i - mid] = arr[i];
         }
+
         mergeSort(leftArr);
         mergeSort(rightArr);
-        merge(arr, leftArr,rightArr);
+        merge(arr, leftArr, rightArr);
+
     }
 
     public static void printArray(int[] arr){
@@ -64,13 +61,15 @@ public class MergeSort {
         System.out.println();
     }
 
+
     public static void main(String[] args){
-        int[] arr = {90,-9,3,5,1,0};
-        System.out.println("Original array");
+        int[] arr = {4,2,-9,89,0,2};
+
+        System.out.println("Original array------");
         printArray(arr);
 
         mergeSort(arr);
-        System.out.println("Sorted array by Merge sort");
+        System.out.println("Sorted array --------");
         printArray(arr);
 
     }
