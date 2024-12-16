@@ -2,10 +2,11 @@ package sorting;
 
 public class QuickSort {
 
-    // Core idea : 1. Select a pivot (generally last element is selected as pivot) any element can be selected.
-    //             2. Re-arrange the elements in array so that all the elements smaller than pivot are towards left
-    //              loop through the entire array, keeping track of pIndex(initialized set to start i.e 0)
-    //              call quickSort function recursivelly on both left and right half.
+    // Core idea : 1. Select a pivot, any element can be selected (generally last element is selected as pivot).
+    //             2. Re-arrange the elements in array so that all the elements smaller than pivot are towards left, and greater are towards right.
+    //             3. loop through the entire array, keeping track of pIndex(initially set to index 0).
+    //             4. call quickSort function recursively on both left and right half of arr.
+    //             -> base condition for recursion - > [start < end], should have at least one element.
 
 
 
@@ -13,6 +14,7 @@ public class QuickSort {
         int pivot = arr[end];
         int pIndex = start;
 
+        // loop through the particular segment of arr bounded by [start, end] not the entire arr.
         for(int i = start; i < end; i++){
             if(arr[i] <= pivot){
                 swap(arr, i, pIndex);
@@ -44,8 +46,6 @@ public class QuickSort {
             quickSort(arr, pIndex + 1, end);
         }
     }
-
-
 
     public static void main(String[] args){
         int[] arr = {8,3,6,7,2,3,5,6,4};
