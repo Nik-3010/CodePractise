@@ -49,6 +49,7 @@ public class QuickSort {
 
     public static void main(String[] args){
         int[] arr = {8,3,6,7,2,3,5,6,4};
+        String s = "Nishant";
         quickSort(arr, 0, arr.length - 1);
         printArray(arr);
     }
